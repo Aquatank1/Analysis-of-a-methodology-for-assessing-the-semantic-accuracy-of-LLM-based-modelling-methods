@@ -1,0 +1,44 @@
+classdiagram Pizzeria {
+    
+  public class Cheese {
+    + int quantity;
+  }
+    public class Dough {
+    + int quantity;
+  }
+    public class TomatoSauce {
+    + int quantity;
+  }
+    public class Salami {
+    + int quantity;
+  }
+    public class Flour{
+    + int quantity;
+  }
+
+  public class Pizza {
+    + Cheese cheese;
+    + Dough dough;
+    + TomatoSauce tomatoSauce;
+    + Salami salami;
+    + boolean baked;
+    + PizzaKind kind;
+    + Size size;
+  }
+  public class Order {
+    + PizzaKind kind;
+    + Size size;
+    + int price;
+  }
+
+  public enum PizzaKind {
+    //describes the kind of Pizza 
+    MARGHERITA,
+    SALAMI;
+  }
+  public enum Size {
+    // describes the size of Pizza
+    SMALL,
+    LARGE;
+  }
+}

@@ -1,0 +1,26 @@
+classdiagram University {
+
+
+  abstract class Person {
+    public String fullName;
+    String address;
+    Date dateOfBirth;
+  }
+
+  package university.staff {
+    class Employee extends Person {
+      int employeeID;
+    }
+
+    class Chair{
+      String id;
+      String researchArea;
+    }
+  }
+
+  association [1] Lecturer (heldBy) < - > (holds) Lecture;
+  association Student (attendees) < - > (attends) Lecture;
+  association [*] Course - > (curriculum) Lecture [1..*];
+  association [1..*] Student < - > (studies) Course [1..*];
+
+}

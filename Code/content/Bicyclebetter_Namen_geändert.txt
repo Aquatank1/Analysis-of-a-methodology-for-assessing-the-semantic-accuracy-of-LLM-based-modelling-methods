@@ -1,0 +1,79 @@
+classdiagram Bicycle {
+  /**
+   * Light output
+   */
+  public class Light {
+    + double lumenocassity;
+  }
+
+  public enum Breaktype {
+    DISK, RIM, DRUM, NONE;
+  }
+
+  public class Breaks {
+    + double condition;
+    + double breakpower;
+    + Breaktype part;
+  }
+
+  public enum Pedal {
+    BLOCK, FLAT, RACING, NONE;
+  }
+
+  public class Sprocket {
+    + int teethingFront;
+    + Pedal right;
+    + Pedal left; 
+  }
+
+  /**
+   * Gear
+   */
+  public class GearRatio {
+    + double current_reinforcement;
+    + double aimed_reinforcement;
+  }
+
+  public class RearWheel {
+    + double radius;
+    + Break used_break;
+    + int teethingRear;
+  }
+      
+  public class FrontWheel {
+    + double radius;
+    + Break used_break;
+  }
+
+  public class Dynamo {
+    + Energy energy_produced;
+  }
+
+  public class Travelled {
+    + int miles;
+  }
+
+  public class Energy {
+    + double volt;
+    + double coulomb;
+  }
+
+  public class Lamp {
+    + Energy in;
+    + Light out;
+  }    
+
+  public class Bicycle {
+  + double velocity;
+  + Dynamo dynamo;
+  + GearRatio now_ratio;
+  + Distance drivenDistance;
+  + Lamp tailLamp;
+  + Lamp headLamp;
+  }
+
+  association [1] Dynamo (generates) <-> (uses)Lamp [*];
+  association [1] GearRatio (Aimed_teeth) <-> (Current_teeth) FrontWheel [1];  
+  association [1] GearRatio (Aimed_teeth) <-> (Current_teeth) RearWheel [1];
+  association [*] Breaks (Dynamo_drag) <- Dynamo [1];
+}

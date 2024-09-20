@@ -1,0 +1,84 @@
+package railroad;
+
+classdiagram Railroad {
+  class Railnet {
+    String name;
+    String company;
+    List<Line> part;
+  }
+
+  class Line {
+    String iD;
+    Station start_Station;
+    Station end_Station;
+    List<Station> visited_Stations;
+    int amount_tracks;
+    int manufacture_year;
+    boolean has_electric_lines;
+  }
+
+  class Station {
+    String station_name;
+    String adress;
+    int number_tracks;
+    StationType type;
+  }
+
+  enum StationType {
+    MIXED, PASSANGER, FREIGHT;
+  }
+
+  class Journey {
+    int trainID;
+    Line line;
+    TripStatus tripStatus;
+  }
+
+  enum TripStatus {
+    ON_TIME, DELAYED;
+  }
+
+  package Train{
+    abstract class TrainComponent {
+      int productionID;
+      boolean works;
+    }
+
+    class Locomotive extends TrainComponent{
+      Locomotivetype locomotivetype;
+      int max_number_cars;
+    }
+
+    enum Locomotivetype{
+      ELECTRIC, DIESEL, STEAM, DIESELELECTRIC;
+    }
+
+    class Baggage extends TrainComponent;
+    class Sleeping extends TrainComponent;
+    class Passenger extends TrainComponent;
+
+    class Train {
+      Locomotive locomotive;
+      List<Baggage> baggageCars;
+      List<Sleeping> sleepingCars;
+      List<Passenger> passengerCars;
+      List<Journey> done_journeys;
+    }
+  }
+
+  class Trip {
+    int trainNumber;
+    Journey journey;
+    List<Station> visited_Stations;
+    Station start_Station;
+    Station end_Station;
+    Date arrivalTime;
+    Date departureTime;
+  }
+
+  association [1] Line (goes through) -> Station [*];
+  association [1] Journey (uses) <-> (Users) Line [*];
+  association [*] Train (works on) <-> Railnet [1];
+  association [1] Trip (uses) <-> Train [*];
+  association [*] Journey (has) <-> (leeds) Locomotive [1];
+}

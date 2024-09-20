@@ -1,0 +1,23 @@
+def insert_newline_before_Q(text):
+    # Initialize an empty string to hold the modified text
+    modified_text = ""
+    
+    # Iterate through each character in the input text
+    for char in text:
+        # If the character is an uppercase 'Q', add a newline before it
+        if char == 'Q':
+            modified_text += '\n' + char
+        else:
+            # Otherwise, just add the character as it is
+            modified_text += char
+    
+    return modified_text
+
+# Get input text from the user
+input_text = input("Enter the text: ")
+
+# Get the modified text with newlines before 'Q'
+output_text = insert_newline_before_Q(input_text)
+
+# Print the result
+print(output_text)

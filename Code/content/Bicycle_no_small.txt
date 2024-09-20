@@ -1,0 +1,28 @@
+classdiagram Bicycle {
+  /**
+   * Gear
+   */
+  public class GearRatio {
+    + int teethFront;
+    + int teethRear;
+  }
+
+
+  public class Electricity {
+    + double volt;
+    + double coulomb;
+  }
+
+  public class Lamp {
+    + Electricity in;
+    + Light out;
+  }    
+
+  public class Bike {
+  + Energy energy;
+  + GearRatio ratio;
+  + Distance coveredDistance;
+  + Lamp rearLight;
+  + Lamp frontLight;
+  }
+}

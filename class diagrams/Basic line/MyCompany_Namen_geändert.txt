@@ -1,0 +1,34 @@
+classdiagram MyCorperation {
+  abstract class Entity;
+
+  enum Type { SOLE_PROPRIETOR, S_CORP, C_CORP, B_CORP, CLOSE_CORP, NON_PROFIT; }
+
+  package people {
+    class Person extends Entity {
+      Date dateofbirth;
+      List<String> nickNames;
+    }
+
+    class Address {
+      String city_name;
+      String street_name;
+      int house_number;
+    }
+  }
+
+  class Corperation extends Entity {
+    Type type;
+  }
+
+  class Workforce extends people.Person {
+    int salary;
+  }
+
+  class Share {
+    int price;
+  }
+
+  association [2..*] Corperation (employer) <-> Workforce [*];
+  association [1] Corperation <-> Share [*];
+  association stockowning [1] Entity (stockowner) <-> (owns) Share [7..9478];
+}

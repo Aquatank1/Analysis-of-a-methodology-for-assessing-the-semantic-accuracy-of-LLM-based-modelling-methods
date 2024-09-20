@@ -1,0 +1,91 @@
+package bicycle;
+
+classdiagram BicycleDealer {
+  class BicycleDealer {
+    String name;
+    String adress;
+    List<String> suppliers;
+    Storetype storetype;
+    Managment managmentype;
+  }
+
+  enum Managment {
+    INDIPENDENT, CHAIN, FRANCHISE, MANUFACTRUER;
+  }
+
+  enum Storetype {
+    SMALL, BIG, SPECIALIZED;
+  }
+
+  public class Storage{
+    List<Product> storedProducts;
+    int storearea;
+    int distance_to_store;
+    Managment managementtype;
+  }
+
+  public class Product{
+    int buyPrice;
+    int sellPrice;
+    int warranty;
+    TypeApproval typeApproval;
+  }
+
+  class TypeApproval {
+    int approvalNumber;
+    String institution;
+    List<String> countries;
+  }
+
+  package Bikes {
+    enum FrameType {
+      HOLLAND, TRACKING, MOUNTAIN;
+    }
+
+    enum MotorType {
+      SMALL, LARGE;
+    }
+
+    class Bicycle extends Product {
+      FrameType frame;
+      double sale;
+      int age;
+    }
+
+    class E_Bike extends Bicycle {
+      MotorType motor;
+      double batteryPercent;
+      String motormanufacturer;
+      boolean hasLicensePlate;
+    }
+  }
+
+  package E_Roller {
+    enum BatteryType {
+      SMALL, MEDIUM, LARGE;
+    }
+
+    class E_Roller extends Product{
+      BatteryType Battery;
+      String Appname;
+      boolean needsLicensePlate;
+    }
+
+    class LicensePlate {
+      String plateNumber;
+      String country;
+    }
+  }
+
+  package Addons {
+    enum AddonType {
+      PERFORMANCE, SECURITY, ASTHETIC;
+    }
+
+    class Addon extends Product{
+      AddonType type;
+      boolean china_copy;
+      boolean firesale;
+    }
+  }
+}

@@ -1,0 +1,97 @@
+package bicycle;
+
+classdiagram BicycleDealer {
+  class BicycleDealer {
+    String name;
+    String adress;
+    List<String> suppliers;
+    Storetype storetype;
+    Managment managmentype;
+  }
+
+  public class Storage{
+    List<Product> storedProducts;
+    int storearea;
+    int distance_to_store;
+    Managment managementtype;
+  }
+
+  class TypeApproval {
+    int approvalNumber;
+    String institution;
+    List<String> countries;
+  }
+
+  public class Product{
+    int buyPrice;
+    int sellPrice;
+    int warranty;
+    TypeApproval typeApproval;
+  }
+
+  package E_Roller {
+    class E_Roller extends Product{
+      BatteryType Battery;
+      String Appname;
+      boolean needsLicensePlate;
+    }
+
+    enum BatteryType {
+      SMALL, MEDIUM, LARGE;
+    }
+
+    class LicensePlate {
+      String plateNumber;
+      String country;
+    }
+  }
+
+  package Addons {
+    class Addon extends Product{
+      AddonType type;
+      boolean china_copy;
+      boolean firesale;
+    }
+
+    enum AddonType {
+      PERFORMANCE, SECURITY, ASTHETIC;
+    }
+  }
+
+  package Bikes {
+    class Bicycle extends Product {
+      FrameType frame;
+      double sale;
+      int age;
+    }
+
+    class E_Bike extends Bicycle {
+      MotorType motor;
+      double batteryPercent;
+      String motormanufacturer;
+      boolean hasLicensePlate;
+    }
+
+    enum FrameType {
+      HOLLAND, TRACKING, MOUNTAIN;
+    }
+
+    enum MotorType {
+      SMALL, LARGE;
+    }
+  }
+
+  enum Managment {
+    INDIPENDENT, CHAIN, FRANCHISE, MANUFACTRUER;
+  }
+
+  enum Storetype {
+    SMALL, BIG, SPECIALIZED;
+  }
+
+  association [1] BicycleDealer (sells) <-> (Warranty) Product [1];
+  association [1] E_Roller (has) -> (requires) LicensePlate [0..1];
+  association [*] Addon (for) ->  Product [1..*];
+  association [1] BicycleDealer (orders) -> (supplies) Product [1];
+  association [1..*] Storage (supplies) -> (requires) BicycleDealer [*];
+}

@@ -1,0 +1,20 @@
+classdiagram MyCompany {
+
+  enum CorpKind { SOLE_PROPRIETOR, S_CORP, C_CORP, B_CORP, CLOSE_CORP, NON_PROFIT; }
+  package people {
+    class Person extends Entity {
+      Date birthday;
+      List<String> nickNames;
+    }
+
+    class Address {
+      String city;
+      String street;
+      int number;
+    }
+  }
+
+  association [2..*] Company (employer) <-> Employee [*];
+  association [1] Company <- Share [*];
+  association shareholding [1] Entity (shareholder) <-> (owns) Share [7..9478];
+}

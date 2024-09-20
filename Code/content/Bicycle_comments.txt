@@ -1,0 +1,59 @@
+classdiagram Bicycle {
+
+
+  public class Energy {
+    + double joule;
+  }
+
+
+  public class Light {
+    + double lumen;
+  }
+
+
+  public class GearRatio {
+    + int teethFront;
+    + int teethRear;
+  }
+
+
+  public class Rotation {
+    + double radian;
+  }
+
+  // the Bike needs Wheels this simulates them
+  public class Wheel {
+  }
+
+  // a Dynamo produces Electricity for the Lamps
+  public class Dynamo {
+      Electricity electricity;
+  }
+
+  // this class records the travelled Distance in meters
+  public class Distance {
+    + double meter;
+  }
+  
+  //To measure Electricity the value for volt and coulomb are recorded
+  public class Electricity {
+    + double volt;
+    + double coulomb;
+  }
+
+  //The Lamp needs Electricity and puts light out
+  public class Lamp {
+    + Electricity in;
+    + Light out;
+  }
+
+  //This is the main class of Bike and brings all the relevant  
+  //components together
+  public class Bike {
+  + Energy energy;
+  + GearRatio ratio;
+  + Distance coveredDistance;
+  + Lamp rearLight;
+  + Lamp frontLight;
+  }
+}

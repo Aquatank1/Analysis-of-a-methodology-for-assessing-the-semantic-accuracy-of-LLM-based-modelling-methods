@@ -1,0 +1,49 @@
+classdiagram Pizzeria {
+   public class Component {
+    + int quantity;
+  }
+
+  public class Cheese extends Component {
+    + boolean vegan;
+  }
+  
+  public class Dough extends Component {
+    + double rested_mins;
+  }
+
+  public class Salami extends Component {
+    + String animal;
+  }
+
+  public class Sauce extends Component
+
+
+  public class Pizza {
+    + Cheese cheese;
+    + Dough dough;
+    + Sauce sauce;
+    + Salami salami;
+    + boolean cooked;
+    + Type type;
+    + Diameter diameter;
+  }
+  public class Purchase {
+    + Type type;
+    + Diameter diameter;
+  }
+    public class Cost {
+    + int costs;
+  }
+
+
+  public enum Type {
+    //describes the kind of Pizza 
+    MARGHERITA,
+    SALAMI;
+  }
+  public enum Diameter {
+    // describes the size of Pizza
+    SMALL,
+    LARGE;
+  }
+}

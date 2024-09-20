@@ -1,0 +1,42 @@
+classdiagram Pizzeria {
+   public class Incredient {
+    + int quantity;
+  }
+
+  public class Cheese extends Incredient {
+    + boolean vegan;
+  }
+
+  public class Dough extends Incredient {
+    + double rested_mins;
+  }
+
+  public class Salami extends Incredient {
+    + String animal;
+  }
+
+  public class TomatoSauce extends Incredient
+
+  public class Pizza {
+  }
+
+  public class Order {
+    + PizzaKind kind;
+    + Size size;
+  }
+    public class Bill {
+    + int price;
+  }
+
+  public enum PizzaKind {
+    //describes the kind of Pizza 
+    MARGHERITA,
+    SALAMI;
+  }
+
+  public enum Size {
+    // describes the size of Pizza
+    SMALL,
+    LARGE;
+  }
+}

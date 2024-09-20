@@ -1,0 +1,37 @@
+classdiagram University {
+
+  public interface Lecturer;
+
+  abstract class Person {
+    String id;
+    String researchArea;
+    int employeeID;
+    int credits;
+    Subject subject;
+    public String fullName;
+    String address;
+    Date dateOfBirth;
+  }
+
+  class Course {
+  }
+
+  class Lecture {
+  }
+
+  package university.staff {
+    class Employee extends Person {
+    }
+
+    class Professor extends Person implements Lecturer;
+
+    class Chair{
+    }
+  }
+
+  association [1] Lecturer (heldBy) < - > (holds) Lecture;
+  association Student (attendees) < - > (attends) Lecture;
+  association [*] Course - > (curriculum) Lecture [1..*];
+  association [1..*] Student < - > (studies) Course [1..*];
+
+}

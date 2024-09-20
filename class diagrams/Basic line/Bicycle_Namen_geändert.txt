@@ -1,0 +1,60 @@
+classdiagram Bicycle {
+
+  /**
+   * Movement energy measured as kWh.
+   */
+  public class Movement_energy {
+    + double kWH;
+  }
+
+  /**
+   * Lumen output
+   */
+  public class Lumen {
+    + double lumen;
+  }
+
+  /**
+   * Transmission
+   */
+  public class Transmission_Ratio {
+    + int teethFront;
+    + int teethRear;
+  }
+
+  /**
+   * measured rotation in radian
+   */
+  public class Rotation {
+    + double radian;
+  }
+
+  public class Tyre {
+  }
+
+  public class Dynamo {
+      Electricity electricity;
+  }
+
+  public class Range {
+    + double miles;
+  }
+
+  public class Electricity {
+    + double volt;
+    + double coulomb;
+  }
+
+  public class Light {
+    + Electricity in;
+    + Lumen out;
+  }    
+
+  public class Bike {
+  + Movement_energy movement_energy ;
+  + Transmission_Ratio ratio;
+  + Range coveredrange;
+  + Light rearLight;
+  + Light frontLight;
+  }
+}

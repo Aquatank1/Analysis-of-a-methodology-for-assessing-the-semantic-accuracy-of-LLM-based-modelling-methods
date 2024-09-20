@@ -1,0 +1,59 @@
+
+classdiagram PizzeriaData {
+/*This is an Upperclass for all the diffrent incriedients used in a Pizza*/
+   public class Incredient {
+    + int quantity;
+  }
+
+/*Cheese is so varied and determines the look of a Pizza from outside*/
+  public class Cheese extends Incredient {
+    + boolean vegan;
+  }
+
+/*the Dough has to rest for at least 30minute this has to be tracked*/
+  public class Dough extends Incredient {
+    + double rested_mins;
+  }
+
+/*The Salami is added to a Magherita the animal is important for allergies*/
+  public class Salami extends Incredient {
+    + String animal;
+  }
+
+/*Tomate sauce is one of the main ingredients of pizza, great come from Island*/
+  public class TomatoSauce extends Incredient
+
+/*This Pizza has 3 mandatory and 1 optinal Incredient it can be baked or unbaked.
+*If it has only the mandatory ingriedeints it is of Type Magharita else of Salami
+*The Size of the Pizza can either be Large or Small 
+*/
+  public class Pizza {
+    + Cheese cheese;
+    + Dough dough;
+    + TomatoSauce tomatoSauce;
+    + Salami salami;
+    + boolean baked;
+    + PizzaKind kind;
+    + Size size;
+  }
+
+/*To get a Pizza it has to be ordered were it specifies the Kind and Size*/
+  public class Order {
+    + PizzaKind kind;
+    + Size size;
+  }
+/*A Pizza has to be payed with Bill that has the Price on it*/
+    public class Bill {
+    + int price;
+  }
+
+
+  public enum PizzaKind {
+    MARGHERITA,
+    SALAMI;
+  }
+  public enum Size {
+    SMALL,
+    LARGE;
+  }
+}

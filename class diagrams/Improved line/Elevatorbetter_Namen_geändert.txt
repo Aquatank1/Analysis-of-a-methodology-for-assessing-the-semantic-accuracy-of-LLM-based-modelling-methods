@@ -1,0 +1,114 @@
+classdiagram Elevator {
+  interface Object {
+    + boolean is_maintained = false;
+    + boolean is_needed = true;
+  }
+
+  public class Floor {
+    + int number;
+    + Floor_type type;
+    + Door door;
+    + Boolean call;
+  }
+
+  public class Elevator_basics {
+    + int number_floors;
+    //are all needed Systems operational
+    + boolean is_functional;
+    + List<Floor> floors;
+    + Functional_system_Safety functional_system;
+    + Safety_system_Safety safety_system;
+    + Optional_system_Safety optional_system;
+  }
+
+  public enum Floor_type{
+  RECEPTION, PRIVATE,
+  PUBLIC, ADMINASTRATIVE, MAINTENANCE, 
+  SPECIAL, PARKING;
+  }
+
+  public class Door implements Safety{
+    + boolean is_open;
+  }
+
+  public class Engine implements Safety{
+    + Movement movement;
+  }
+  
+  public enum Movement{
+    UP, DOWN, NO;
+  }
+
+  public class Card_Reader implements Safety{
+    + Floor_type accessiable;
+  }
+
+  public class Loadsensor implements Safety{
+    + int max_capacity;
+    + boolean exceeds_capacity;
+  }
+
+  public class Sticker implements Safety{
+    + int last_check;
+    + String examiner;
+  }
+
+  public class Bell implements Safety{
+    + boolean activitated;
+  }
+
+  public class Door_sensor implements Safety{
+    + boolean closeable;
+  }
+
+  public class Display implements Safety{
+    + Displaytype displaytype;
+    + Object notification;
+  }
+
+  public enum Displaytype{
+    PICTURES, OPERATIONAL, ADS;
+  }
+
+  public class Loudspeaker implements Safety{
+    + Object notification;
+  }
+
+  public class Next_Floor_Data {
+    + List<Integer> call_cabin;
+    + List<Integer> call_outside;
+  }
+
+  public class Functional_system_Safety {
+    + boolean maintenance;  
+    + boolean open_door;
+    + boolean emergency_stop;
+    + boolean safety_bell;
+    + List<Boolean> floor_calls;
+    + Card_Reader card_reader;
+    + Engine engine;
+    + Door door;
+  }
+
+  public class Safety_system_Safety {
+    + Loadsensor loadchecker; 
+    + Sticker last_check;
+    + Bell bell;
+    + Door_sensor door_checker;
+  }
+
+  public class Optional_system_Safety {
+    + Display movment_sign;
+    + Display current_level;
+    + Display television;
+    + Loudspeaker floor_name;
+    + Loudspeaker entertaiment;
+    + Loudspeaker communication;
+  }
+
+  association [1] Safety_system_Safety (linked) -> Loudspeaker [1..*];
+  association [1] Safety_system_Safety (linked) -> Display [1..*];
+  association [1] Door (linked) -> Door_sensor [1..*];
+  association [1..*] Floor <-> Elevator_basics [1..*];
+  association [1] Safety_system_Safety (linked) <-> Engine [1..*];
+}

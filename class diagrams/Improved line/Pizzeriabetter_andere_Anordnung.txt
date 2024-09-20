@@ -1,0 +1,85 @@
+classdiagram Pizzeria {
+   public class Incredient {
+    + int quantity_kg;
+    + boolean handmade;
+    + String type;
+  }
+
+  public class Dough extends Incredient {
+    + double rested_mins;
+    + boolean vegan;
+    + Flourtype flourtype;
+  }
+
+  enum Flourtype {
+    WHEAT, RYE, MIX, WHOLEGRAIN, SEASONAL;
+  }
+
+  public class Cheese extends Incredient {
+    + boolean vegan;
+  }
+
+  public class Salami extends Incredient {
+    + boolean spicey;
+    + String animal;
+  }
+
+  public class TomatoSauce extends Incredient {
+    + double tomatos_ml;
+    + double salt_used_gr;
+    + double pepper_used_gr;
+    + double oregamo_used_gr;
+  }
+
+  public class Pizza {
+    + Cheese cheese;
+    + Dough dough;
+    + TomatoSauce tomatoSauce;
+    + Salami salami;
+    + int bakingtime;
+    + PizzaKind kind;
+    + Size size;
+  }
+
+  public class Order {
+    + PizzaKind kind;
+    + Size size;
+  }
+
+  public enum PizzaKind {
+    BEER, WATER, SOFTDRINK, WINE;
+  }
+
+  public enum DrinkKind {
+    MARGHERITA, SALAMI;
+  }
+
+  public class Delivery extends Order{
+    + Adress String;
+    + double distance;
+  }
+
+  public class Drinks{
+    + int quantity_ml;
+    + double price;
+    + DrinkKind type;
+  }
+
+  public class Tip {
+    + Size size;
+  }
+
+  public enum Size {
+    SMALL, NORMAL, LARGE;
+  }
+
+  public class Bill {
+    + double price;
+    + List<Order> orders;
+    + List<Drinks> drinks;
+  }
+  
+  association [1] Tip  <->  Bill [1];
+  association [1] Pizza  <->  Order [1];
+  association [1] Tip  <->  Order [*];
+}

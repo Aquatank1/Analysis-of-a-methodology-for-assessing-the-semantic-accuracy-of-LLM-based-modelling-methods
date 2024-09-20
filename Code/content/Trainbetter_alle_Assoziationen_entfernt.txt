@@ -1,0 +1,78 @@
+package railroad;
+
+classdiagram Railroad {
+  class Railnet {
+    String name;
+    String organization;
+    List<RailroadLine> parts;
+  }
+
+  class RailroadLine {
+    String iD;
+    Station startingStation;
+    Station terminus;
+    List<Station> stoppingStations;
+    int amount_tracks;
+    int age;
+    boolean electrified;
+  }
+
+  class Station {
+    String name;
+    String adress;
+    int tracks;
+    StationType type;
+  }
+
+  enum StationType {
+    MIXED, PASSANGER, FREIGHT;
+  }
+
+  class Journey {
+    int trainNumber;
+    RailroadLine railroadLine;
+    TripStatus tripStatus;
+  }
+
+  enum TripStatus {
+    ON_TIME, UNPUNCTUAL;
+  }
+
+  package Train{
+    abstract class TrainComponent {
+      int productionNumber;
+      boolean is_functional;
+    }
+
+    class Locomotive extends TrainComponent{
+      Locomotivetype type;
+      int max_cars;
+    }
+
+    enum Locomotivetype{
+      ELECTRIC, DIESEL, STEAM, DIESELELECTRIC;
+    }
+
+    class BaggageCar extends TrainComponent;
+    class SleepingCar extends TrainComponent;
+    class PassengerCar extends TrainComponent;
+
+    class Train {
+      Locomotive locomotive;
+      List<BaggageCar> baggageCars;
+      List<SleepingCar> sleepingCars;
+      List<PassengerCar> passengerCars;
+      List<Journey> journeys;
+    }
+  }
+
+  class Trip {
+    int trainNumber
+    Journey journey;
+    List<Station> stops;
+    Station start;
+    Station end;
+    Date arrivalTime;
+    Date departureTime;
+  }
+}

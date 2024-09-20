@@ -1,0 +1,97 @@
+package bike;
+
+classdiagram BikeDealer {
+  class BikeDealer {
+    String name;
+    String adress;
+    List<String> suppliers;
+    Shoptype shoptype;
+    Ownership ownershiptype;
+  }
+
+  enum Ownership {
+    INDIPENDENT, CHAIN, FRANCHISE, MANUFACTRUER;
+  }
+
+  enum Shoptype {
+    LITTLE, LARGE, SPECIFIC;
+  }
+
+  public class Storage{
+    List<Product> stockedProducts;
+    int size;
+    int distance_to_shop;
+    Ownership ownershiptype;
+  }
+
+  public class Product{
+    int internPrice;
+    int customerPrice;
+    int gurantee_days;
+    TypeApproval typeApproval;
+  }
+
+  class TypeApproval {
+    int approvalcode;
+    String issuerName;
+    List<String> states;
+  }
+
+  package Bikes {
+    enum FrameType {
+      CASUAL, TRACKING, MOUNTAIN;
+    }
+
+    enum MotorType {
+      LITTLE, BIG;
+    }
+
+    class Bike extends Product {
+      FrameType frame;
+      double discount;
+      int time_waited;
+    }
+
+    class E_Bike extends Bike {
+      MotorType motor;
+      double batteryPercent;
+      String producer;
+      boolean LicensePlate;
+    }
+  }
+
+  package E_Roller {
+    enum BatteryType {
+      LITTLE, NORMAL, BIG;
+    }
+
+    class E_Roller extends Product{
+      BatteryType Battery;
+      String App;
+      boolean needsLicensePlate;
+    }
+
+    class LicensePlate {
+      String plateString;
+      String region;
+    }
+  }
+
+  package Addons {
+    enum AddonType {
+      PERFORMANCE, SAFETY, DESIGN;
+    }
+
+    class Addon extends Product{
+      AddonType type;
+      boolean from_china;
+      boolean has_discount;
+    }
+  }
+
+  association [1] BikeDealer (orders) -> (supplies) Product [1];
+  association [1] BikeDealer (sells) <-> (Warranty) Product [1];
+  association [*] Addon (for) ->  Product [1..*];
+  association [1..*] Storage (supplies) -> (requires) BikeDealer [*];
+  association [1] E_Roller (has) -> (requires) LicensePlate [0..1];
+}

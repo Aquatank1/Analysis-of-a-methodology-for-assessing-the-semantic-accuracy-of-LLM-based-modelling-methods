@@ -1,0 +1,45 @@
+classdiagram University {
+/*This is for all the employees at the university as they can be considered   lecturers*/
+  public interface Lecturer;
+
+/*This is for allpersons that interact with the University*/
+  abstract class Person {
+    public String fullName;
+    String address;
+    Date dateOfBirth;
+  }
+
+/*The Universtiy offers Courses which the Students can attend*/
+  class Course {
+    Subject subject;
+  }
+
+/*The Universtiy offers Letures which the Students must attend to gain points*/
+  class Lecture {
+    int credits;
+  }
+
+/*Theire are some people working at the University*/
+  package university.staff {
+
+    /*Every Employee of the University as an ID which is a number*/
+    class Employee extends Person {
+      int employeeID;
+    }
+
+    /*Every Professor of the University is a Person and a Lecturer*/
+    class Professor extends Person implements Lecturer;
+
+    /*The University has Chairs for a specififc reserach area*/
+    class Chair{
+      String id;
+      String researchArea;
+    }
+  }
+
+  association [1] Lecturer (heldBy) < - > (holds) Lecture;
+  association Student (attendees) < - > (attends) Lecture;
+  association [*] Course - > (curriculum) Lecture [1..*];
+  association [1..*] Student < - > (studies) Course [1..*];
+
+}

@@ -1,0 +1,64 @@
+classdiagram University {
+  interface Person {
+    String fullName;
+    String address;
+    Date dateOfBirth;
+  }
+
+  abstract class Lecturer implements Person{
+    String subject;
+  }
+
+  class Course {
+    String subject;
+    Exam exam;
+    Lecture lecture;
+    int credits;
+  }
+
+  class Exam{
+    Date first;
+    Date second;
+    int duration_minutes;
+  }
+
+  class Lecture {
+    List<Date> appointment;
+    int total_hours;
+  }
+
+  public enum Qualification {
+    BACHELOR, MASTER, PHD;
+  }
+
+  package university.staff {
+    class Employee extends Person {
+      int employeeID;
+      int salary;
+    }
+
+    class Chair{
+      String id;
+      String subject;
+      String researchArea;
+    }
+
+    class Professor extends Lecturer{
+      Chair member;
+      int professorID;
+      String current_research_area;
+    }
+
+    class Assistant extends Employee{
+      Chair member;
+      Qualification qualification;
+    }
+  }
+
+  association [1] Lecturer (heldBy) <-> (holds) Lecture [*];
+  association [1..*] Student <-> (studies) Course [*];
+  association [3..*] Employee (Oversees) <-> Exam [*];
+  association [1..*] Lecturer (Clarification) <-> Exam [*];
+  association [1] Student (Final_thesis) -> Exam [1];
+  association [*] Assistant <-> Professor [1];
+}

@@ -1,0 +1,85 @@
+classdiagram Pizzeria {
+   public class Content {
+    + int quantity;
+    + boolean is_handmade;
+    + String manufacturer;
+  }
+
+  public class Cheese extends Content {
+    + boolean is_vegan;
+  }
+
+  public class Dough extends Content {
+    + double rested_for;
+    + boolean is_vegan;
+    + Flourtype flourtype;
+  }
+
+  enum Flourtype {
+    WHEAT, RYE, MIX, WHOLEGRAIN, SEASONAL;
+  }
+
+  public class TomatoSauce extends Content {
+    + double tomatos_ml;
+    + double salt_gr
+    + double pepper_gr;
+    + double oregamo_gr;
+  }
+
+  public class Salami extends Content {
+    + boolean is_spicey;
+    + String made_from;
+  }
+
+  public class Drink{
+    + int quantity_L;
+    + double cost;
+    + Drink kind;
+  }
+
+  public class Pizza {
+    + Cheese cheese;
+    + Dough dough;
+    + TomatoSauce sauce;
+    + Salami salami;
+    + double time_in_oven;
+    + PizzaType type;
+    + Size size;
+  }
+
+  public class Order {
+    + PizzaType type;
+    + Size size;
+  }
+
+  public class Delivery extends Order{
+    + Adress String;
+    + double distance;
+  }
+  
+  public class Thanks {
+    + Size size;
+  }
+
+  public class Bill {
+    + double price;
+    + List<Order> orders;
+    + List<Drinks> drinks;
+  }
+
+  public enum Drink {
+    BEER, WATER, SOFTDRINK, WINE;
+  }
+
+  public enum PizzaType {
+    MARGHERITA, SALAMI;
+  }
+
+  public enum Size {
+    LITTLE, STANDARD, BIG;
+  }
+
+  association [1] Pizza  <->  Order [1];
+  association [1] Thanks  <->  Order [*];
+  association [1] Thanks  <->  Bill [1];
+}

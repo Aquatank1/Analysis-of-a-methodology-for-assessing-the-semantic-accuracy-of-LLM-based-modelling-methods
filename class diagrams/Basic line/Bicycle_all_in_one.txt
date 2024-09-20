@@ -1,0 +1,66 @@
+classdiagram Bicycle {
+
+  /**
+   * Kinetic energy measured as joule.
+   */
+  public class Energy {
+  }
+
+  /**
+   * Light output
+   */
+  public class Light {
+  }
+
+  /**
+   * Gear
+   */
+  public class GearRatio {
+
+  }
+
+  /**
+   * measured rotation in radian
+   */
+  public class Rotation {
+
+  }
+
+  public class Wheel {
+  }
+
+  public class Dynamo {
+
+  }
+
+  public class Distance {
+
+  }
+
+  public class Electricity {
+
+  }
+
+  public class Lamp {
+
+  }    
+
+  public class Bike {
+  + Energy energy;
+  + GearRatio ratio;
+  + Distance coveredDistance;
+  + Lamp rearLight;
+  + Lamp frontLight;
+  + double joule;
+  + Electricity in;
+  + Light out;
+  + double volt;
+  + double coulomb;
+  + double meter;
+    Electricity electricity;
+  + double radian;
+  + int teethFront;
+  + int teethRear;
+  + double lumen;
+  }
+}

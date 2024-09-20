@@ -1,0 +1,108 @@
+classdiagram Elevator {
+  interface Thing {
+    + boolean is_maintained = false;
+    + boolean is_critical = true;
+  }
+
+  public class Floor {
+    + int number;
+    + Floor_type type;
+    + Door door;
+    + Boolean summon;
+  }
+
+  public class Elevator_basics {
+    + int number_floors;
+    //are all critical Systems working
+    + boolean is_operational;
+    + List<Floor> floors;
+    + Functional_system_Thing functional_system;
+    + Security_system_Thing security_system;
+    + Additional_system_Thing additional_system;
+  }
+
+  public enum Floor_type{
+  RECEPTION, PRIVATE,
+  PUBLIC, ADMINASTRATIVE, MAINTENANCE, 
+  SECRET, PARKING;
+  }
+
+  public class Door implements Thing{
+    + boolean is_open;
+  }
+
+  public class Engine implements Thing{
+    + Movement movement;
+  }
+  
+  public enum Movement{
+    UP, DOWN, NO;
+  }
+
+  public class Card_Reader implements Thing{
+    + Floor_type accessiable;
+  }
+
+  public class Loadsensor implements Thing{
+    + int max_weight;
+    + boolean exceeds_weight;
+  }
+
+  public class Sticker implements Thing{
+    + int last_checked;
+    + String issuer;
+  }
+
+  public class Bell implements Thing{
+    + boolean ringing;
+  }
+
+  public class Door_sensor implements Thing{
+    + boolean can_close;
+  }
+
+  public class Screen implements Thing{
+    + Screentype screentype;
+    + Object message;
+  }
+
+  public enum Screentype{
+    IMAGES, FUNCTIONAL, ADS;
+  }
+
+  public class Speakers implements Thing{
+    + Object message;
+  }
+
+  public class Next_Floor_Data {
+    + List<Integer> request_cabin;
+    + List<Integer> request_outside;
+  }
+
+  public class Functional_system_Thing {
+    + boolean maintenance;  
+    + boolean open_door;
+    + boolean emergency_stop;
+    + boolean emergency_bell;
+    + List<Boolean> floor_requests;
+    + Card_Reader card_reader;
+    + Engine engine;
+    + Door door;
+  }
+
+  public class Security_system_Thing {
+    + Loadsensor loadsensor; 
+    + Sticker last_check;
+    + Bell bell;
+    + Door_sensor door_sensor;
+  }
+
+  public class Additional_system_Thing {
+    + Screen movment_direction;
+    + Screen current_floor;
+    + Screen tv;
+    + Speakers floor_name;
+    + Speakers enteraiment;
+    + Speakers communication;
+  }
+}
